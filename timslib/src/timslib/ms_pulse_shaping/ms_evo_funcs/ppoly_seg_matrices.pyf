@@ -1,0 +1,35 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module ppoly_seg_matrices ! in 
+    interface  ! in :ppoly_seg_matrices
+        subroutine alpha_seg_matrix(a_seg_mat,t_bp,n_seg,mu,psi,n_modes,omegas,pmax) ! in :ppoly_seg_matrices:ppoly_seg_matrices.f95
+            use alpha_chi_expr
+            double complex dimension(n_modes,1 + pmax,n_seg),intent(out),depend(n_seg,n_modes,pmax) :: a_seg_mat
+            double precision dimension(1 + n_seg) :: t_bp
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            double precision :: mu
+            double precision :: psi
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            double precision dimension(n_modes) :: omegas
+            integer :: pmax
+        end subroutine alpha_seg_matrix
+        subroutine x_seg_matrix(x_seg_mat,t_bp,n_seg,eta1,eta2,mu,psi,omegas,n_modes,pmax) ! in :ppoly_seg_matrices:ppoly_seg_matrices.f95
+            use alpha_chi_expr
+            double precision dimension(1 + pmax,n_seg,1 + pmax,n_seg),intent(out),depend(n_seg,pmax) :: x_seg_mat
+            double precision dimension(1 + n_seg) :: t_bp
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            double precision dimension(n_modes) :: eta1
+            double precision dimension(n_modes),depend(n_modes) :: eta2
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes),depend(n_modes) :: omegas
+            integer, optional,intent(hide),check(shape(eta1, 0) == n_modes),depend(eta1) :: n_modes=shape(eta1, 0)
+            integer :: pmax
+        end subroutine x_seg_matrix
+    end interface 
+end python module ppoly_seg_matrices
+
+! This file was auto-generated with f2py (version:2.0.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

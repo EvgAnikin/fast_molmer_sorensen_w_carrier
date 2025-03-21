@@ -1,0 +1,20 @@
+[build-system]
+build-backend = "mesonpy"
+requires = [
+    "meson-python>=0.12.1",
+    "wheel",
+    "oldest-supported-numpy"
+]
+
+[project]
+name = "timslib"
+dependencies = [
+    "numpy == 1.24.*",
+    "scipy >= 1.0.0",
+    "pandas >= 2.0.0",
+    "odfpy", 
+    "matplotlib"
+]
+description = "Analytical results for trapped-ion entangling gates"
+dynamic = ["version"]
+

@@ -1,0 +1,27 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module ipowexp ! in 
+    interface  ! in :ipowexp
+        subroutine ipowexp_arr(val,p,e,t) ! in :ipowexp:ipowexp.f95
+            use alpha_chi_expr
+            double complex dimension(1 + p),intent(out),depend(p) :: val
+            integer :: p
+            double precision :: e
+            double precision :: t
+        end subroutine ipowexp_arr
+        subroutine ipowexp2_arr(val,p1,p2,e1,e2,t) ! in :ipowexp:ipowexp.f95
+            use alpha_chi_expr
+            double complex dimension(1 + p1,1 + p2),intent(out),depend(p1,p2) :: val
+            integer :: p1
+            integer :: p2
+            double precision :: e1
+            double precision :: e2
+            double precision :: t
+        end subroutine ipowexp2_arr
+    end interface 
+end python module ipowexp
+
+! This file was auto-generated with f2py (version:2.0.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

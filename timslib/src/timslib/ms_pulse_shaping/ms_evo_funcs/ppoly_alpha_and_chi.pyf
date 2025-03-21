@@ -1,0 +1,90 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module ppoly_alpha_and_chi ! in 
+    interface  ! in :ppoly_alpha_and_chi
+        subroutine ppoly_carrier_phase_eqf_at_bp(phase_at_bp,t_bp,oomegas,n_seg,mu,psi,pmax) ! in :ppoly_alpha_and_chi:ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double precision dimension(1 + n_seg),intent(out),depend(n_seg) :: phase_at_bp
+            double precision dimension(1 + n_seg) :: t_bp
+            double precision dimension(1 + pmax,n_seg),depend(n_seg) :: oomegas
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            double precision :: mu
+            double precision :: psi
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine ppoly_carrier_phase_eqf_at_bp
+        subroutine ppoly_carrier_phase_eqf(phase_func,t2,t1,t_bp,oomegas,mu,psi,n_seg,carrier_phases_at_bp,pmax) ! in :ppoly_alpha_and_chi:ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double precision intent(out) :: phase_func
+            double precision :: t2
+            double precision :: t1
+            double precision dimension(1 + n_seg) :: t_bp
+            double precision dimension(1 + pmax,n_seg),depend(n_seg) :: oomegas
+            double precision :: mu
+            double precision :: psi
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            double precision dimension(1 + n_seg),depend(n_seg) :: carrier_phases_at_bp
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine ppoly_carrier_phase_eqf
+        subroutine ppoly_alpha_eqf_at_bp(alphas_at_bp,t_bp,oomegas,mu,psi,omegas,n_seg,n_modes,pmax) ! in :ppoly_alpha_and_chi:ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double complex dimension(1 + n_seg,n_modes),intent(out),depend(n_seg,n_modes) :: alphas_at_bp
+            double precision dimension(1 + n_seg) :: t_bp
+            double precision dimension(1 + pmax,n_seg),depend(n_seg) :: oomegas
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes) :: omegas
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine ppoly_alpha_eqf_at_bp
+        subroutine ppoly_alpha_eqf(alphas,t2,t1,t_bp,oomegas,mu,psi,omegas,n_seg,n_modes,alphas_at_bp,pmax) ! in :ppoly_alpha_and_chi:ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double complex dimension(n_modes),intent(out),depend(n_modes) :: alphas
+            double precision :: t2
+            double precision :: t1
+            double precision dimension(1 + n_seg) :: t_bp
+            double precision dimension(1 + pmax,n_seg),depend(n_seg) :: oomegas
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes) :: omegas
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            double complex dimension(1 + n_seg,n_modes),depend(n_seg,n_modes) :: alphas_at_bp
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine ppoly_alpha_eqf
+        subroutine ppoly_chi_eqf_at_bp(chis_at_bp,t_bp,oomegas,mu,psi,omegas,n_seg,n_modes,alphas_at_bp,pmax) ! in :ppoly_alpha_and_chi:ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double precision dimension(1 + n_seg,n_modes),intent(out),depend(n_seg,n_modes) :: chis_at_bp
+            double precision dimension(1 + n_seg) :: t_bp
+            double precision dimension(1 + pmax,n_seg),depend(n_seg) :: oomegas
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes) :: omegas
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            double complex dimension(1 + n_seg,n_modes),depend(n_seg,n_modes) :: alphas_at_bp
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine ppoly_chi_eqf_at_bp
+        subroutine ppoly_chi_eqf(chis,t2,t1,t_bp,oomegas,mu,psi,omegas,n_seg,n_modes,alphas_at_bp,chis_at_bp,pmax) ! in :ppoly_alpha_and_chi:ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double precision dimension(n_modes),intent(out),depend(n_modes) :: chis
+            double precision :: t2
+            double precision :: t1
+            double precision dimension(1 + n_seg) :: t_bp
+            double precision dimension(1 + pmax,n_seg),depend(n_seg) :: oomegas
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes) :: omegas
+            integer, optional,intent(hide),check(shape(t_bp, 0) == 1 + n_seg),depend(t_bp) :: n_seg=-1 + shape(t_bp, 0)
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            double complex dimension(1 + n_seg,n_modes),depend(n_seg,n_modes) :: alphas_at_bp
+            double precision dimension(1 + n_seg,n_modes),depend(n_seg,n_modes) :: chis_at_bp
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine ppoly_chi_eqf
+    end interface 
+end python module ppoly_alpha_and_chi
+
+! This file was auto-generated with f2py (version:2.1.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e

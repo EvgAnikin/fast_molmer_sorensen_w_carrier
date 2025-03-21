@@ -1,0 +1,38 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module num_ppoly_alpha_and_chi ! in 
+    interface  ! in :num_ppoly_alpha_and_chi
+        subroutine num_alpha_and_chi_eqf_w_carrier(alpha_and_chi,n_vals,oomegas,t_bp,mu,psi,omegas,carrier_phases_at_bp,n_seg,n_modes,pmax) ! in :num_ppoly_alpha_and_chi:num_ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double complex dimension(2,n_vals,n_modes),intent(out),depend(n_vals,n_modes) :: alpha_and_chi
+            integer :: n_vals
+            double precision dimension(1 + pmax,n_seg) :: oomegas
+            double precision dimension(1 + n_seg),depend(n_seg) :: t_bp
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes) :: omegas
+            double precision dimension(1 + n_seg),depend(n_seg) :: carrier_phases_at_bp
+            integer, optional,intent(hide),check(shape(oomegas, 1) == n_seg),depend(oomegas) :: n_seg=shape(oomegas, 1)
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine num_alpha_and_chi_eqf_w_carrier
+        subroutine num_alpha_and_chi_eqf(alpha_and_chi,n_vals,oomegas,t_bp,mu,psi,omegas,n_seg,n_modes,pmax) ! in :num_ppoly_alpha_and_chi:num_ppoly_alpha_and_chi.f95
+            use ppoly_alpha_chi_func
+            double complex dimension(2,n_vals,n_modes),intent(out),depend(n_vals,n_modes) :: alpha_and_chi
+            integer :: n_vals
+            double precision dimension(1 + pmax,n_seg) :: oomegas
+            double precision dimension(1 + n_seg),depend(n_seg) :: t_bp
+            double precision :: mu
+            double precision :: psi
+            double precision dimension(n_modes) :: omegas
+            integer, optional,intent(hide),check(shape(oomegas, 1) == n_seg),depend(oomegas) :: n_seg=shape(oomegas, 1)
+            integer, optional,intent(hide),check(shape(omegas, 0) == n_modes),depend(omegas) :: n_modes=shape(omegas, 0)
+            integer, optional,intent(hide),check(shape(oomegas, 0) == 1 + pmax),depend(oomegas) :: pmax=-1 + shape(oomegas, 0)
+        end subroutine num_alpha_and_chi_eqf
+    end interface 
+end python module num_ppoly_alpha_and_chi
+
+! This file was auto-generated with f2py (version:2.0.0).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e
