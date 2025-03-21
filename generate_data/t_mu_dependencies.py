@@ -5,7 +5,7 @@ from multiprocessing import Pool
 import numpy as np
 
 from scipy.interpolate import PPoly
-from phase_space_gate_params import get_phase_space_results, PhaseSpaceResultsTuple
+from gate_and_pulse_params import get_phase_space_results, PhaseSpaceResultsTuple
 
 from timslib.ion_crystals import IonChain
 from timslib.ion_crystals.normal_modes import nu_ax_from_nu_rad_min
