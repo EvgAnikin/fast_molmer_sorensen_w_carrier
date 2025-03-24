@@ -1,6 +1,6 @@
 from collections import namedtuple
 import numpy as np
-from tdse import chain_spin_string, get_tdse_solution
+from ions_tdse_qutip import chain_spin_string, get_tdse_solution
 from qutip import *
 
 

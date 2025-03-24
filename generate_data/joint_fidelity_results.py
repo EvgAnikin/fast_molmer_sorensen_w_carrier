@@ -5,12 +5,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from cutoff_estimates import get_max_nbars, get_max_nbars_all_spins, get_cutoff_arr_all_spins, get_cutoff_arr
-from timslib.ion_crystals.ion_chain import IonChain
-from timslib.ion_crystals.normal_modes import nu_ax_from_nu_rad_min
-from timslib.ms_pulse_shaping.ms_handler import MSHandlerPPolyEqF as MSHandler
-from gate_and_pulse_params import get_phase_space_results, alpha_spin_string_inf, alpha_avg_inf, delta_chi 
+from timslib.ion_crystals.ion_chain       import IonChain
+from timslib.ion_crystals.normal_modes    import nu_ax_from_nu_rad_min
+from timslib.ms_pulse_shaping.ms_handler  import MSHandlerPPolyEqF as MSHandler
+from fidelity_contribs_from_alpha_and_chi import get_phase_space_results, alpha_spin_string_inf, alpha_avg_inf, delta_chi 
 from spin_flip.spin_flip_prob import spin_flip_prob
-from tdse_tools import get_tdse_results
+from fidelity_contribs_from_tdse import get_tdse_results
 
 
 if __name__ == '__main__':
@@ -46,7 +46,7 @@ if __name__ == '__main__':
         "shaping_type" : "3",
         "used_ions" : [n1, n2],
         "n_df" : 2*n_ions + 1,
-        "carrier_opt" : True,
+        "carrier_opt" : False,
     }
 
     chain = IonChain(**chain_attrs)
@@ -81,7 +81,6 @@ if __name__ == '__main__':
         n_cutoff_arr = get_cutoff_arr(handler, s, tol)
         print('n_cutoff_arr :', n_cutoff_arr)
         n_cutoff_arr = get_cutoff_arr_all_spins(handler, tol)
-        n_cutoff_arr = np.array([5,5,5,10])
         print('n_cutoff_arr (all_spins):', n_cutoff_arr)
 
         print('solving TDSE:')
