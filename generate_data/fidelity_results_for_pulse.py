@@ -4,10 +4,11 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+from cutoff_estimates import get_max_nbars, get_max_nbars_all_spins, get_cutoff_arr_all_spins, get_cutoff_arr
 from timslib.ion_crystals.ion_chain import IonChain
 from timslib.ion_crystals.normal_modes import nu_ax_from_nu_rad_min
 from timslib.ms_pulse_shaping.ms_handler import MSHandlerPPolyEqF as MSHandler
-from gate_and_pulse_params import get_phase_space_results, alpha_spin_string_inf, alpha_avg_inf, get_max_nbars, get_max_nbars_all_spins, delta_chi, get_cutoff_arr_all_spins, get_cutoff_arr
+from gate_and_pulse_params import get_phase_space_results, alpha_spin_string_inf, alpha_avg_inf, delta_chi 
 from spin_flip.spin_flip_prob import spin_flip_prob
 from tdse_tools import get_tdse_results
 
@@ -20,7 +21,7 @@ if __name__ == '__main__':
     parser.add_argument('-ham_type', default='full')
     args = parser.parse_args()
 
-    n_ions = 4
+    n_ions = 2
     nu_rad = 1e6
     nu_rad_min = 0.75e6
     nu_ax = nu_ax_from_nu_rad_min(nu_rad_min, nu_rad, n_ions)
