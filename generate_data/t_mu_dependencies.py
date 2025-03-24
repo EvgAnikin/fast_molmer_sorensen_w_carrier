@@ -64,12 +64,12 @@ if __name__ == '__main__':
     nu_rad_min = 0.75e6
 
     #For the data used in the manuscript: 
-    #dt = 0.1 (us)
-    #delta_mu = 0.001 (MHz)
+    #dt = 0.1 #(us)
+    #delta_mu = 0.001 #(MHz)
 
     #Rough grid for faster calculation
-    #dt = 1 (us)
-    #delta_mu = 0.01 (MHz)
+    dt = 1 #(us)
+    delta_mu = 0.01 #(MHz)
     
 
     muby2pi_range = np.arange(0.5, 1.3, delta_mu)*1e6
