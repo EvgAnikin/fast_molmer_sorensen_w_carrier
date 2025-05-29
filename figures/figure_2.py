@@ -84,14 +84,14 @@ def plot_pictures(chain, handler):
         ax.text(3, 5.7, '2', ha='center', fontsize=12)
     
     def plot_omega(ax, t_range, Om_opt, Om_no_opt):
-        ax.plot(t_range*1e6, Om_opt/1e6,    label=r'$\Omega_\mathrm{tr}(t)$')
-        ax.plot(t_range*1e6, Om_no_opt/1e6, linestyle='--', label=r'$\Omega_\mathrm{lin}(t)$')
-        ax.set_ylabel(r'$\Omega(t)$, MHz')
+        ax.plot(t_range*1e6, Om_opt/1e3/(2*np.pi),    label=r'$\Omega_\mathrm{tr}(t)$')
+        ax.plot(t_range*1e6, Om_no_opt/1e3/(2*np.pi), linestyle='--', label=r'$\Omega_\mathrm{lin}(t)$')
+        ax.set_ylabel(r'$\Omega(t)/(2\pi)$, kHz')
         ax.set_xlabel(r't, $\mu s$')
         ax.legend(loc='lower right')
         ax.text(-0.15, 1.1, 'd)', transform=ax.transAxes, fontsize=12, va='top')
         ax.margins(0)
-        ax.set_ylim(0, max(Om_opt)/1e6*1.1)
+        ax.set_ylim(0, max(Om_opt)/1e3*1.1/(2*np.pi))
     
     def plot_alpha_lines(ax, aph_opt, aph_no_opt, n):
         for j in range(n):
