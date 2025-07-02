@@ -1,0 +1,20 @@
+
+cff-version: 1.2.0
+title: >-
+  Code to generate data, figures, and tables for "Fast
+  Mølmer-Sørensen gates in trapped-ion quantum processors
+  with compensated carrier transition"
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Evgeny
+    family-names: Anikin
+    email: evgenii.anikin@skoltech.ru
+    affiliation: RQC
+    orcid: 'https://orcid.org/0000-0002-2966-3735'
+  - given-names: Andrey
+    family-names: Chuchalin
+    email: Chuchalin.aa@phystech.edu
+    affiliation: 'RQC, Moscow Institute of Physics and Technology'
