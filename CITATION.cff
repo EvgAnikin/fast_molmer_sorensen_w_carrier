@@ -18,3 +18,8 @@ authors:
     family-names: Chuchalin
     email: Chuchalin.aa@phystech.edu
     affiliation: 'RQC, Moscow Institute of Physics and Technology'
+
+version: 0.1.0
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15794563
