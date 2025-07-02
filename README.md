@@ -1,4 +1,5 @@
 ## Code to generate data, figures, and tables for "Fast Mølmer-Sørensen gates in trapped-ion quantum processors with compensated carrier transition" (https://arxiv.org/abs/2501.02387)
+[![DOI](https://zenodo.org/badge/952394253.svg)](https://doi.org/10.5281/zenodo.15794562)
 
 Below, there is a brief description of the code and data present in the repository.
 
